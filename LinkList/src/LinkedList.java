@@ -1,14 +1,19 @@
+import java.util.NoSuchElementException;
+
 public class LinkedList {
     private class Node {
         private int value;
         private Node next;
-
         public Node(int value){
             this.value = value;
         }
     }
+    public int size(){
+        return size;
+    }
     private Node first;
     private Node last;
+    private int size;
     public void addFirst( int item){
         var node = new Node(item);
         if(isEmpty())
@@ -18,6 +23,7 @@ public class LinkedList {
             first = node;
 
         }
+        size++;
     }
     private boolean isEmpty(){
         return first == null;
@@ -30,17 +36,56 @@ public class LinkedList {
             last.next = node;
             last = node;
         }
+        size++;
 
     }
     public void removeFirst(){
+        if(isEmpty())
+            throw new NoSuchElementException();
+        size--;
+        if(first == last) {
+            first = last = null;
+            return;
+        }
         var second = first.next;
         first.next = null;
+
         first = second;
 
-
     }
-    public void deleteLast( int item){
+    public int[] toArray(){
+        int[] array = new int[size];
+        var current = first;
+        var index = 0;
+        while(current != null){
+            array[index++] = current.value;
+            current = current.next;
+        }
+        return array;
+    }
+    public void removeLast(){
 
+
+        if(isEmpty())
+            throw new NoSuchElementException();
+        size --;
+        if(first == last){
+            first = last = null;
+            return;
+
+        }
+        var previous = getPrevious(last);
+        last = previous;
+        last.next = null;
+    }
+
+    private Node getPrevious(Node node){
+        var current = first;
+        while(current != null){
+            if(current.next == node) return current;
+            current = current.next;
+        }
+        return null;
     }
     public boolean contains( int item){
         return indexOf(item) != -1;

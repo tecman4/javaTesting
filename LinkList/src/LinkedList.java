@@ -39,6 +39,20 @@ public class LinkedList {
         size++;
 
     }
+    public int getKthFromTheEnd(int k){
+        if(k<1) throw new NoSuchElementException();
+        if(isEmpty()) throw new IllegalArgumentException();
+        var current = first;
+        var currentk = first;
+        int Kth = 0;
+        while(current != null) {
+            if (Kth >= k) currentk = currentk.next;
+            current = current.next;
+            Kth++;
+        }
+        if (Kth < k) throw new IllegalArgumentException();
+        return currentk.value;
+    }
     public void removeFirst(){
         if(isEmpty())
             throw new NoSuchElementException();
@@ -78,6 +92,23 @@ public class LinkedList {
         last = previous;
         last.next = null;
     }
+    public void reverse(){
+        if(isEmpty()) return;
+        var curr=first.next;
+        var prev= first;
+        while(curr != null) {
+            var next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+            }
+        last = first;
+        last.next =null;
+        first = prev;
+
+
+    }
+
 
     private Node getPrevious(Node node){
         var current = first;

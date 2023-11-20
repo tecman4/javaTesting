@@ -21,7 +21,10 @@ public class Main {
         System.out.println(list.indexOf(10));
         System.out.println(list.size());
         var array = list.toArray();
-        System.out.println(list);
+        System.out.println(Arrays.toString(array));
+        System.out.println(list.getKthFromTheEnd(-1));
+        list.reverse();
+        array = list.toArray();
         System.out.println(Arrays.toString(array));
        }
     }

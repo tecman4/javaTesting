@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/stackBasics.iml" filepath="$PROJECT_DIR$/stackBasics.iml" />
+      <module fileurl="file://$PROJECT_DIR$/stackImplement.iml" filepath="$PROJECT_DIR$/stackImplement.iml" />
     </modules>
   </component>
 </project>

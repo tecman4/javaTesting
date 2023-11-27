@@ -15,12 +15,13 @@ public class Main {
         queue.enqueue(30);
         queue.enqueue(40);
         queue.enqueue(50);
+        queue.dequeue();
+        queue.dequeue();
+        queue.enqueue(60);
+        queue.enqueue(70);
+        queue.dequeue();
+        queue.enqueue(80);
         System.out.println(queue.isFull());
-        int a = queue.dequeue();
-
-        System.out.println(a);
-        System.out.println(queue.print());
-
-
+        System.out.println(queue);
     }
 }

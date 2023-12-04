@@ -9,7 +9,7 @@ public class Main {
         table.put(11,"C");// index 1
         table.put(6,"A+");// index 1
         table.remove(6);
-        System.out.println(table.get(6));
+        System.out.println(table.get(11));
 
 
 
@@ -18,12 +18,5 @@ public class Main {
 
 
 
-//        KeyValuePair pair = new KeyValuePair();
-//       pair.put(5, "Wayne");
-//        pair.put(6, "Matthew");
-//        String whoamiw = pair.get(5);
-//        System.out.println(whoamiw);
-//        String whoamim = pair.get(6);
-//        System.out.println(whoamim);
     }
 }

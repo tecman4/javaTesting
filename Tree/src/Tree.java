@@ -14,12 +14,44 @@ public class Tree {
 public boolean find(int value){
         if(root.value == value)
             return true;
+        var current = root;
+        if(value > current.value){
+
+        }
         return false;
 }
 public void insert(int value){
+    var current = root;
         if(root == null){
-            var node = new Node(value);
-            node = root;
+            root = new Node(value);
+             return;
         }
+
+        while(true) {
+
+            if (value > current.value) {
+
+                if(current.rightChild == null) {
+                    current.rightChild = new Node(value);
+                    current = current.rightChild;
+                    current.value = value;
+                    break;
+                }
+                current = current.rightChild;
+            }
+            if (value < current.value) {
+
+                if(current.leftChild == null) {
+                    current.leftChild = new Node(value);
+                    current = current.leftChild;
+                    current.value = value;
+                    break;
+                }
+                current = current.leftChild;
+            }
+
+        }
+
+
 }
 }

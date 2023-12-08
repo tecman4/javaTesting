@@ -28,5 +28,7 @@ public class Main {
         System.out.println("Min " + tree.min());
         System.out.println("Equals " + tree.equals(tree2));
         System.out.println("IS BST " + tree.isBinarySearchTree());
-    }
+        System.out.println("getNodesAtDistance 2 " + tree.getNodesAtDistance(2));
+        tree.traverseLevelOrder();
+       }
 }

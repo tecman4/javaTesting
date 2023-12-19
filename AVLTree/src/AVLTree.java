@@ -31,28 +31,25 @@ public class AVLTree {
             root.rightChild = insert(root.rightChild, value);
         }
     setHeight(root);
+    return balance(root);
+    }
 
-        return balance(root);
-    }
-    private boolean isLeftHeavy(AVLNode node) {
-        return balanceFactor(node) > 1;
-    }
-    private boolean isRightHeavy(AVLNode node) {
-        return balanceFactor(node)  < (-1);
-    }
 private AVLNode balance(AVLNode root){
-    if(isLeftHeavy(root)) {
-        if(balanceFactor(root.leftChild) > 0) {
+
+    int balanceFactor = balanceFactor(root);
+
+    if (balanceFactor > 1) {
+        if (balanceFactor(root.leftChild) < 0) {
             root.leftChild = rotateLeft(root.leftChild);
-            return rotateRight(root);
         }
-    }
-    else if(isRightHeavy(root)) {
-        if (balanceFactor(root.rightChild) < 0) {
+        return rotateRight(root);
+    } else if (balanceFactor < -1) {
+        if (balanceFactor(root.rightChild) > 0) {
             root.rightChild = rotateRight(root.rightChild);
-            return rotateLeft(root);
         }
+        return rotateLeft(root);
     }
+
     return root;
 }
     private int balanceFactor(AVLNode node){

@@ -4,6 +4,7 @@ public class Main {
         trie.insert("cat");
         trie.insert("can");
         trie.contains("can");
-        System.out.println("Done");
+        System.out.println(trie.contains("can"));
+        trie.traverse();
     }
 }

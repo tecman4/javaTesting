@@ -33,6 +33,9 @@ public class Trie {
         public Node getChild(char ch){
             return children.get(ch);
         }
+        public Node[] getChildren(){
+            return children.values().toArray(new Node[0]);
+        }
 
     }
         private Node root = new Node(' ');
@@ -47,12 +50,26 @@ public class Trie {
             current.isEndOfWord = true;
         }
     public boolean contains(String word) {
+            if(word == null)
+                return false;
         var current = root;
         for(var ch :word.toCharArray()){
             if(!current.hasChild(ch))
                 return false;
-        
+            current = current.getChild(ch);
         }
+            return current.isEndOfWord;
+
+    }
+    public void traverse(){
+        traverse(root);
+    }
+    private void traverse(Node root){
+        System.out.println(root.value);
+        for(var child :root.getChildren())
+            traverse(child);
+    }
+    private boolean delete(String word){
 
     }
     }

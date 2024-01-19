@@ -1,4 +1,6 @@
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class Trie {
     public static int ALPHABET_SIZE = 26;
@@ -72,16 +74,36 @@ public class Trie {
 
     }
 
-    public void traverse() {
-        traverse(root);
+    public List<String> findWords(String prefix) {
+        List<String> words = new ArrayList<>();
+        var lastNode = findLastNodeOf(prefix);
+        findWords(lastNode, prefix, words);
+
+        return words;
     }
 
-    private void traverse(Node root) {
-        System.out.println(root.value);
-        for (var child : root.getChildren())
-            traverse(child);
-    }
+    private void findWords(Node root, String prefix, List<String> words) {
+        if(root == null)
+            return;
+        if(root.isEndOfWord)
+            words.add(prefix);
+        for(var child : root.getChildren())
+            findWords(child, prefix+child.value,words);
 
+    }
+    private Node findLastNodeOf(String prefix) {
+        if(prefix == null)
+            return null;
+
+        var current = root;
+        for(var ch :prefix.toCharArray()){
+            var child = current.getChild(ch);
+            if(child == null)
+                return null;
+            current = child;
+        }
+        return current;
+    }
     public void remove(String word) {
         if(word ==null)
             return;
@@ -104,6 +126,11 @@ public class Trie {
 
     }
 }
+
+
+
+
+
 
 
 

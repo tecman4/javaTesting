@@ -36,6 +36,6 @@ public boolean isFull(){
 @Override
     public String toString() {
         return Arrays.toString(items);
-k
+
     }
 }
